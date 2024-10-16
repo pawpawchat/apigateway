@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/monami/apigateway/internal/rest/domain/dto"
+	"github.com/monami/apigateway/internal/rest/dto"
 )
 
 func LoginHandler() func(*gin.Context) {

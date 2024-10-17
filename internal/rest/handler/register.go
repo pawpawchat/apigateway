@@ -7,8 +7,8 @@ import (
 	"github.com/monami/apigateway/internal/rest/dto"
 )
 
-func LoginHandler() func(*gin.Context) {
-	var input dto.LoginInput
+func RegisterHandler() func(*gin.Context) {
+	var input dto.RegisterInput
 	return func(ctx *gin.Context) {
 		if err := ctx.ShouldBindJSON(&input); err != nil {
 			//failed to parse the request body
@@ -19,14 +19,14 @@ func LoginHandler() func(*gin.Context) {
 		}
 
 		if input.Username != "1" && input.Username != "2" {
-			//failed to authorize
+			//failed to register
 			ctx.JSON(http.StatusUnauthorized, gin.H{
-				"error": "login works only for username \"1\" and \"2\"",
+				"error": "register works only for username \"1\" and \"2\"",
 			})
 			return
 		}
 
-		ctx.JSON(200, dto.LoginOutput{
+		ctx.JSON(200, dto.RegisterOutput{
 			DummyToken: "dummy_token",
 		})
 	}
